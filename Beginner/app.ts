@@ -34,17 +34,23 @@ const person = {
 /**
  *
  *
- * @param {(number | string)} input // union type
+ * @param {(number | string)} input1 // union type
  * @param {(number | string)} input2
  * Literal types allow you to specify that a variable or parameter must have a specific or exact, literal value, rather than just any value of a certain type
  * Example "as-number" | "as-text"
  * @param {("as-number" | "as-text")} resultConversion
  */
 function combine(
-  input: number | string, 
+  input1: number | string, 
   input2: number | string,
   resultConversion: "as-number" | "as-text" //literal types
 ) {
   if ((resultConversion = "as-number")) {
   }
 }
+
+//type Alias
+type Combinable = number | string
+type ConversionDescriptor =  "as-number" | "as-text" // so we have
+//input1 = Combinable
+//input2 = resultConversion
