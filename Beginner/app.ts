@@ -54,3 +54,26 @@ type Combinable = number | string
 type ConversionDescriptor =  "as-number" | "as-text" // so we have
 //input1 = Combinable
 //input2 = resultConversion
+
+//Given this functions
+function add(n1:number,n2:number){
+  return n1+n2
+}
+
+function printResult(num:number) : void {
+  console.log('Result; ' + num)
+}
+
+// FUNCTIONS AS TYPES
+
+/** @type {Function} */
+// let combineValues = Function
+let combineValues : (a:number,b:number) => number
+
+combineValues = add;
+//Typescript isn't complaining because its meets typescript criteria thus add is a function and has two parameters
+
+// combineValues = printResult
+//Typescript throws an error because the function only has one parameter
+
+console.log(combineValues(10,8))
