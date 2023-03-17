@@ -97,4 +97,5 @@ addAndHandle(10, 5, (result) => {
 function generateError(message: string, code: number): never {
   throw { message: message, errorCode: code };
 }
-generateError("An error occurred!", 500);
+console.log("my name is ")
+// generateError("An error occurred!", 500);

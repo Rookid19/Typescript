@@ -1,3 +1,4 @@
+"use strict";
 var Role;
 (function (Role) {
     Role[Role["ADMIN"] = 5] = "ADMIN";
@@ -22,11 +23,11 @@ function printColor(color) {
 printColor(Color.Red); // logs 0
 printColor(Color.Green); // logs 1
 printColor(Color.Blue); // logs 2
-var person = {
+const person = {
     name: "Maximilian",
     age: 30,
     hobbies: ["Sports", "Cooking"],
-    role: Role.ADMIN
+    role: Role.ADMIN,
 };
 /**
  *
@@ -54,7 +55,7 @@ function printResult(num) {
 // FUNCTIONS AS TYPES
 /** @type {Function} */
 // let combineValues = Function
-var combineValues;
+let combineValues;
 combineValues = add;
 //Typescript isn't complaining because its meets typescript criteria thus add is a function and has two parameters
 // combineValues = printResult
@@ -68,13 +69,14 @@ combineValues = add;
  * @param {(num: number) => void} cb
  */
 function addAndHandle(n1, n2, cb) {
-    var result = n1 * n2;
+    const result = n1 * n2;
     cb(result);
 }
-addAndHandle(10, 5, function (result) {
+addAndHandle(10, 5, (result) => {
     console.log(result);
 });
 function generateError(message, code) {
     throw { message: message, errorCode: code };
 }
-generateError("An error occurred!", 500);
+console.log("my name is ");
+// generateError("An error occurred!", 500);
