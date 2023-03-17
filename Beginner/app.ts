@@ -78,8 +78,6 @@ combineValues = add;
 
 // console.log(combineValues(10,8))
 
-
-
 /**
  * FUNCTION TYPES AND CALLBACKS
  *
@@ -90,9 +88,13 @@ combineValues = add;
 function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
   const result = n1 * n2;
   cb(result);
-
 }
 
 addAndHandle(10, 5, (result) => {
-  console.log(result)
-})
+  console.log(result);
+});
+
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
+generateError("An error occurred!", 500);

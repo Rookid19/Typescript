@@ -60,9 +60,21 @@ combineValues = add;
 // combineValues = printResult
 //Typescript throws an error because the function only has one parameter
 // console.log(combineValues(10,8))
+/**
+ * FUNCTION TYPES AND CALLBACKS
+ *
+ * @param {number} n1
+ * @param {number} n2
+ * @param {(num: number) => void} cb
+ */
 function addAndHandle(n1, n2, cb) {
     var result = n1 * n2;
     cb(result);
-    return result;
 }
-console.log(addAndHandle(10, 5, function (result) { }));
+addAndHandle(10, 5, function (result) {
+    console.log(result);
+});
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
+}
+generateError("An error occurred!", 500);
