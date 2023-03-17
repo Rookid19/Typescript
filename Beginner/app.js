@@ -49,7 +49,7 @@ function add(n1, n2) {
     return n1 + n2;
 }
 function printResult(num) {
-    console.log('Result; ' + num);
+    console.log("Result; " + num);
 }
 // FUNCTIONS AS TYPES
 /** @type {Function} */
@@ -59,4 +59,10 @@ combineValues = add;
 //Typescript isn't complaining because its meets typescript criteria thus add is a function and has two parameters
 // combineValues = printResult
 //Typescript throws an error because the function only has one parameter
-console.log(combineValues(100, 8));
+// console.log(combineValues(10,8))
+function addAndHandle(n1, n2, cb) {
+    var result = n1 * n2;
+    cb(result);
+    return result;
+}
+console.log(addAndHandle(10, 5, function (result) { }));

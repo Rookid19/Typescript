@@ -41,7 +41,7 @@ const person = {
  * @param {("as-number" | "as-text")} resultConversion
  */
 function combine(
-  input1: number | string, 
+  input1: number | string,
   input2: number | string,
   resultConversion: "as-number" | "as-text" //literal types
 ) {
@@ -50,25 +50,25 @@ function combine(
 }
 
 //type Alias
-type Combinable = number | string
-type ConversionDescriptor =  "as-number" | "as-text" // so we have
+type Combinable = number | string;
+type ConversionDescriptor = "as-number" | "as-text"; // so we have
 //input1 = Combinable
 //input2 = resultConversion
 
 //Given this functions
-function add(n1:number,n2:number){
-  return n1+n2
+function add(n1: number, n2: number) {
+  return n1 + n2;
 }
 
-function printResult(num:number) : void {
-  console.log('Result; ' + num)
+function printResult(num: number): void {
+  console.log("Result; " + num);
 }
 
 // FUNCTIONS AS TYPES
 
 /** @type {Function} */
 // let combineValues = Function
-let combineValues : (a:number,b:number) => number
+let combineValues: (a: number, b: number) => number;
 
 combineValues = add;
 //Typescript isn't complaining because its meets typescript criteria thus add is a function and has two parameters
@@ -76,4 +76,23 @@ combineValues = add;
 // combineValues = printResult
 //Typescript throws an error because the function only has one parameter
 
-console.log(combineValues(10,8))
+// console.log(combineValues(10,8))
+
+
+
+/**
+ * FUNCTION TYPES AND CALLBACKS
+ *
+ * @param {number} n1
+ * @param {number} n2
+ * @param {(num: number) => void} cb
+ */
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+  const result = n1 * n2;
+  cb(result);
+
+}
+
+addAndHandle(10, 5, (result) => {
+  console.log(result)
+})
