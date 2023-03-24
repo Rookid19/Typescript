@@ -131,3 +131,6 @@ console.log("my name is ")
 
 // "outDir": "./dist",
 // stores all compiled ts file to js files into the dist folder
+
+// "rootDir": "./src",                                  
+/* Specify the root folder within your source files. */

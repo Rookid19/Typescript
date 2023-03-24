@@ -101,3 +101,7 @@ console.log("my name is ");
 // ]
 // sourceMap
 // sourceMap acts as bridge which is understood by modern browsers and developers tools to connect javascript files to input files
+// "outDir": "./dist",
+// stores all compiled ts file to js files into the dist folder
+// "rootDir": "./src",                                  
+/* Specify the root folder within your source files. */
