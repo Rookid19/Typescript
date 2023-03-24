@@ -99,3 +99,29 @@ function generateError(message: string, code: number): never {
 }
 console.log("my name is ")
 // generateError("An error occurred!", 500);
+
+
+// Including and Excluding files
+
+// This has to pasted in tsconfig.json
+
+// "exclude": [
+//   "node_modules",
+//   "using-ts.ts", // don't compile a file named using-ts.ts,
+//   "*.dev.ts", // typescript won't compile all files *.dev.ts 
+//   "**/*dev.ts" // any file with this pattern should be excluded
+// ] 
+
+// "include": [
+//   "app.ts",
+//   "using-ts.ts", // compiles a file named using-ts.ts,
+// ]
+
+// lib is an option that allows you to specify which default object and features typescript knows
+
+// "lib":[
+//    "dom",
+//    "es6",
+//    "dom.iterable",
+//    "scripthost"
+// ]
