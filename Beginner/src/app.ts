@@ -97,9 +97,8 @@ addAndHandle(10, 5, (result) => {
 function generateError(message: string, code: number): never {
   throw { message: message, errorCode: code };
 }
-console.log("my name is ")
+console.log("my name is ");
 // generateError("An error occurred!", 500);
-
 
 // Including and Excluding files
 
@@ -108,9 +107,9 @@ console.log("my name is ")
 // "exclude": [
 //   "node_modules",
 //   "using-ts.ts", // don't compile a file named using-ts.ts,
-//   "*.dev.ts", // typescript won't compile all files *.dev.ts 
+//   "*.dev.ts", // typescript won't compile all files *.dev.ts
 //   "**/*dev.ts" // any file with this pattern should be excluded
-// ] 
+// ]
 
 // "include": [
 //   "app.ts",
@@ -132,8 +131,43 @@ console.log("my name is ")
 // "outDir": "./dist",
 // stores all compiled ts file to js files into the dist folder
 
-// "rootDir": "./src",                                  
+// "rootDir": "./src",
 /* Specify the root folder within your source files. */
 
-// "noEmitOnError": true,                          
-  /* Disable emitting files if any type checking errors are reported. */
+// "noEmitOnError": true,
+/* Disable emitting files if any type checking errors are reported. */
+
+// INTERSECTION TYPES
+type Admin = {
+  name: string;
+  privileges: string[];
+};
+
+type Employee = {
+  name: string;
+  startDate: Date;
+};
+
+type ElevatedEmployee = Admin & Employee;
+
+const e1: ElevatedEmployee = {
+  name: "Max",
+  privileges: ["created-server"],
+  startDate: new Date(),
+};
+
+type UnKnownEmployee = Employee | Admin;
+
+function printEmployeeInformation(emp: UnKnownEmployee) {
+  console.log(emp.name);
+
+  if ("privileges" in emp) {
+    console.log("Privileges: " + emp.privileges);
+  }
+
+  if ("startDate" in emp) {
+    console.log("startDate: " + emp.startDate);
+  }
+}
+
+printEmployeeInformation(e1);

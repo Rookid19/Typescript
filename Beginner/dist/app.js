@@ -79,29 +79,18 @@ function generateError(message, code) {
     throw { message: message, errorCode: code };
 }
 console.log("my name is ");
-// generateError("An error occurred!", 500);
-// Including and Excluding files
-// This has to pasted in tsconfig.json
-// "exclude": [
-//   "node_modules",
-//   "using-ts.ts", // don't compile a file named using-ts.ts,
-//   "*.dev.ts", // typescript won't compile all files *.dev.ts 
-//   "**/*dev.ts" // any file with this pattern should be excluded
-// ] 
-// "include": [
-//   "app.ts",
-//   "using-ts.ts", // compiles a file named using-ts.ts,
-// ]
-// lib is an option that allows you to specify which default object and features typescript knows
-// "lib":[
-//    "dom",
-//    "es6",
-//    "dom.iterable",
-//    "scripthost"
-// ]
-// sourceMap
-// sourceMap acts as bridge which is understood by modern browsers and developers tools to connect javascript files to input files
-// "outDir": "./dist",
-// stores all compiled ts file to js files into the dist folder
-// "rootDir": "./src",                                  
-/* Specify the root folder within your source files. */
+const e1 = {
+    name: "Max",
+    privileges: ["created-server"],
+    startDate: new Date(),
+};
+function printEmployeeInformation(emp) {
+    console.log(emp.name);
+    if ("privileges" in emp) {
+        console.log("Privileges: " + emp.privileges);
+    }
+    if ("startDate" in emp) {
+        console.log("startDate: " + emp.startDate);
+    }
+}
+printEmployeeInformation(e1);
