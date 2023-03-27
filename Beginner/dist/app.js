@@ -84,6 +84,12 @@ const e1 = {
     privileges: ["created-server"],
     startDate: new Date(),
 };
+/**
+ * Both Employee or Admin has a key called name so console logging emp.name throws no error
+ * but privileges and startDate throws an error unless is been wrapped around an if statement.
+ *
+ * @param {UnKnownEmployee} emp
+ */
 function printEmployeeInformation(emp) {
     console.log(emp.name);
     if ("privileges" in emp) {
@@ -94,3 +100,38 @@ function printEmployeeInformation(emp) {
     }
 }
 printEmployeeInformation(e1);
+class Car {
+    drive() {
+        console.log("Driving....");
+    }
+}
+class Truck {
+    drive() {
+        console.log("Driving a truck...");
+    }
+    loadCargo(amount) {
+        console.log("Loading cargo ...." + amount);
+    }
+}
+const v1 = new Car();
+const v2 = new Truck();
+function useVehicle(vehicle) {
+    vehicle.drive();
+    if (vehicle instanceof Truck) {
+        vehicle.loadCargo(1000);
+    }
+}
+useVehicle(v1);
+// we cant use instanceof because we are using interface
+function moveAnimal(animal) {
+    let speed;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+    }
+    console.log('Moving at speed: ' + speed);
+}
+moveAnimal({ type: 'horse', runningSpeed: 100 });

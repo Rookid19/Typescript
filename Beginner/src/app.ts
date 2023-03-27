@@ -208,3 +208,30 @@ function useVehicle(vehicle: Vehicle){
 }
 
 useVehicle(v1)
+
+//Discriminated Unions
+interface Bird{
+  type:'bird'
+  flyingSpeed: number
+}
+
+interface Horse {
+  type:'horse'
+  runningSpeed : number
+}
+type Animal =Bird | Horse;
+
+// we cant use instanceof because we are using interface
+function moveAnimal(animal:Animal){
+ let speed;
+ switch(animal.type){
+    case 'bird':
+      speed = animal.flyingSpeed
+      break;
+    case 'horse':
+      speed = animal.runningSpeed
+ }
+ console.log('Moving at speed: '+ speed)
+}
+
+moveAnimal({type:'horse',runningSpeed:100})
