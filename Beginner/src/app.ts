@@ -245,3 +245,11 @@ const userInputElement = document.getElementById(
 if (userInputElement) {
   (userInputElement as HTMLInputElement).value = "Hi there";
 }
+
+//index properties
+
+interface ErrorContainer{
+  [prop:string]:string;
+  // eg. email : '' ---> correct because email (prop) is a string and its value is also a string
+  // eg. 1 : '' ----> wrong because the prop suppose to be a string not a number
+}
