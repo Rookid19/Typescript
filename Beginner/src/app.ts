@@ -126,7 +126,8 @@ console.log("my name is ");
 // ]
 
 // sourceMap
-// sourceMap acts as bridge which is understood by modern browsers and developers tools to connect javascript files to input files
+// sourceMap acts as bridge which is understood by modern browsers and developers tools to connect
+// javascript files to input files
 
 // "outDir": "./dist",
 // stores all compiled ts file to js files into the dist folder
@@ -199,39 +200,48 @@ type Vehicle = Car | Truck;
 const v1 = new Car();
 const v2 = new Truck();
 
-
-function useVehicle(vehicle: Vehicle){
+function useVehicle(vehicle: Vehicle) {
   vehicle.drive();
-  if( vehicle instanceof Truck){
-    vehicle.loadCargo(1000)
+  if (vehicle instanceof Truck) {
+    vehicle.loadCargo(1000);
   }
 }
 
-useVehicle(v1)
+useVehicle(v1);
 
 //Discriminated Unions
-interface Bird{
-  type:'bird'
-  flyingSpeed: number
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
 }
 
 interface Horse {
-  type:'horse'
-  runningSpeed : number
+  type: "horse";
+  runningSpeed: number;
 }
-type Animal =Bird | Horse;
+type Animal = Bird | Horse;
 
 // we cant use instanceof because we are using interface
-function moveAnimal(animal:Animal){
- let speed;
- switch(animal.type){
-    case 'bird':
-      speed = animal.flyingSpeed
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
       break;
-    case 'horse':
-      speed = animal.runningSpeed
- }
- console.log('Moving at speed: '+ speed)
+    case "horse":
+      speed = animal.runningSpeed;
+  }
+  console.log("Moving at speed: " + speed);
 }
 
-moveAnimal({type:'horse',runningSpeed:100})
+moveAnimal({ type: "horse", runningSpeed: 100 });
+
+// type casting
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')
+const userInputElement = document.getElementById(
+  "user-input"
+) as HTMLInputElement;
+
+if (userInputElement) {
+  (userInputElement as HTMLInputElement).value = "Hi there";
+}
