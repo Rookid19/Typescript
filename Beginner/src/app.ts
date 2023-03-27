@@ -158,6 +158,12 @@ const e1: ElevatedEmployee = {
 
 type UnKnownEmployee = Employee | Admin;
 
+/**
+ * Both Employee or Admin has a key called name so console logging emp.name throws no error
+ * but privileges and startDate throws an error unless is been wrapped around an if statement.
+ *
+ * @param {UnKnownEmployee} emp
+ */
 function printEmployeeInformation(emp: UnKnownEmployee) {
   console.log(emp.name);
 
@@ -171,3 +177,34 @@ function printEmployeeInformation(emp: UnKnownEmployee) {
 }
 
 printEmployeeInformation(e1);
+
+class Car {
+  drive() {
+    console.log("Driving....");
+  }
+}
+
+class Truck {
+  drive() {
+    console.log("Driving a truck...");
+  }
+
+  loadCargo(amount: number) {
+    console.log("Loading cargo ...." + amount);
+  }
+}
+
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+const v2 = new Truck();
+
+
+function useVehicle(vehicle: Vehicle){
+  vehicle.drive();
+  if( vehicle instanceof Truck){
+    vehicle.loadCargo(1000)
+  }
+}
+
+useVehicle(v1)
