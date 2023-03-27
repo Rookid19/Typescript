@@ -134,3 +134,6 @@ console.log("my name is ")
 
 // "rootDir": "./src",                                  
 /* Specify the root folder within your source files. */
+
+// "noEmitOnError": true,                          
+  /* Disable emitting files if any type checking errors are reported. */

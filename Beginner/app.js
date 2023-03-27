@@ -14,7 +14,8 @@ var Color;
 })(Color || (Color = {}));
 /**
  *
- *We can use an enum in TypeScript to define a variable or function parameter with a specific set of allowed values. For example, we could define a function that only accepts values from the Color enum
+ * We can use an enum in TypeScript to define a variable or function parameter with a specific set of allowed values. For example,
+ * we could define a function that only accepts values from the Color enum
  * @param {Color} color
  */
 function printColor(color) {
