@@ -125,7 +125,7 @@ console.log("my name is ");
 //    "scripthost"
 // ]
 
-// sourceMap
+// SOURCEMAP
 // sourceMap acts as bridge which is understood by modern browsers and developers tools to connect
 // javascript files to input files
 
@@ -209,7 +209,7 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(v1);
 
-//Discriminated Unions
+//DISCRIMINATED UNIONS
 interface Bird {
   type: "bird";
   flyingSpeed: number;
@@ -236,7 +236,7 @@ function moveAnimal(animal: Animal) {
 
 moveAnimal({ type: "horse", runningSpeed: 100 });
 
-// type casting
+// TYPE CASTING
 // const userInputElement = <HTMLInputElement>document.getElementById('user-input')
 const userInputElement = document.getElementById(
   "user-input"
@@ -246,10 +246,23 @@ if (userInputElement) {
   (userInputElement as HTMLInputElement).value = "Hi there";
 }
 
-//index properties
+//INDEX PROPERTIES
 
 interface ErrorContainer{
   [prop:string]:string;
   // eg. email : '' ---> correct because email (prop) is a string and its value is also a string
   // eg. 1 : '' ----> wrong because the prop suppose to be a string not a number
+}
+
+// FUNCTIONS OVERLOAD
+
+// type Combinable = string | number;
+
+function add(a:number,b:number):number
+funtion add(a:string,b:string):string
+function add(a:Combinable,b:Combinable){
+  if(typeof a === 'string' || typeof b === 'string'){
+    return a.toString() + b.toString()
+  }
+  return a+b
 }
