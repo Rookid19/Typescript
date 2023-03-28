@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 var Role;
 (function (Role) {
     Role[Role["ADMIN"] = 5] = "ADMIN";
@@ -126,12 +127,39 @@ useVehicle(v1);
 function moveAnimal(animal) {
     let speed;
     switch (animal.type) {
-        case 'bird':
+        case "bird":
             speed = animal.flyingSpeed;
             break;
-        case 'horse':
+        case "horse":
             speed = animal.runningSpeed;
     }
-    console.log('Moving at speed: ' + speed);
+    console.log("Moving at speed: " + speed);
 }
-moveAnimal({ type: 'horse', runningSpeed: 100 });
+moveAnimal({ type: "horse", runningSpeed: 100 });
+// TYPE CASTING
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')
+const userInputElement = document.getElementById("user-input");
+if (userInputElement) {
+    userInputElement.value = "Hi there";
+}
+function add3(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString();
+    }
+    return a + b;
+}
+const result = add3('Joe', 'Kofi');
+result.split(' ');
+//OPTIONAL CHAINING
+const fetchedUserData = {
+    id: 'u1',
+    name: 'Max',
+    job: { title: 'CEO', description: 'My own company' }
+};
+console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+// NULLISH COALESCING
+const userInput = undefined;
+// ?? -> this is called nullish coalescing operator
+// if userInput is undefined or null return DEFAULT
+const storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
+console.log(storedData);

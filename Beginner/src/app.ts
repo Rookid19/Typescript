@@ -138,6 +138,25 @@ console.log("my name is ");
 // "noEmitOnError": true,
 /* Disable emitting files if any type checking errors are reported. */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // INTERSECTION TYPES
 type Admin = {
   name: string;
