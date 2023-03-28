@@ -258,6 +258,17 @@ interface ErrorContainer{
 
 // type Combinable = string | number;
 
+/**
+ * the add3 functions has 3+ overloads for all cases
+ *
+ * @param {number} a
+ * @param {number} b
+ * @param {Combinable} a
+ * @param {Combinable} b
+ * @param {string} a
+ * @param {string} b
+ * @return {*}  {number}
+ */
 function add3(a:number,b:number):number
 function add3(a:string,b:string):string;
 function add3(a:string,b:number):string;
@@ -270,3 +281,14 @@ function add3(a:Combinable,b:Combinable){
 }
 
 const result = add3('Joe','Kofi')
+result.split(' ')
+
+
+//OPTIONAL CHAINING
+const fetchedUserData ={
+  id:'u1',
+  name:'Max',
+  job:{title:'CEO',description:'My own company'}
+}
+
+console.log(fetchedUserData?.job?.title)
