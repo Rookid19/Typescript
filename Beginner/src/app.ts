@@ -292,3 +292,13 @@ const fetchedUserData ={
 }
 
 console.log(fetchedUserData?.job?.title)
+
+// NULLISH COALESCING
+
+const userInput = undefined;
+
+  // ?? -> this is called nullish coalescing operator
+  // if userInput is undefined or null return DEFAULT
+const storedData = userInput ?? 'DEFAULT';
+
+console.log(storedData)
