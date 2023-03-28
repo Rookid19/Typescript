@@ -258,11 +258,15 @@ interface ErrorContainer{
 
 // type Combinable = string | number;
 
-function add(a:number,b:number):number
-funtion add(a:string,b:string):string
-function add(a:Combinable,b:Combinable){
+function add3(a:number,b:number):number
+function add3(a:string,b:string):string;
+function add3(a:string,b:number):string;
+function add3(a:number,b:string):string;
+function add3(a:Combinable,b:Combinable){
   if(typeof a === 'string' || typeof b === 'string'){
     return a.toString() + b.toString()
   }
   return a+b
 }
+
+const result = add3('Joe','Kofi')
