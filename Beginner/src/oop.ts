@@ -1,7 +1,13 @@
 // getters => access properties
 // setters => change (mutate) them
 
+/**
+ * 
+ *
+ * @class Department
+ */
 class Department {
+  //private readonly id : string
   // name: string;
   private employees: string[] = [];
 
@@ -10,14 +16,13 @@ class Department {
   // }
 
   // shorthand initialization
-constructor(private id:string, public name: string){
-
-}
+  // readonly is used to initialize property once
+constructor(private readonly id:string, public name: string){}
 
   // this keyword is to refer to class property or a method inside a class
 
   describe(this: Department) {
-    console.log("Department " + this.name);
+    console.log("Department " +(this.id)+" " + this.name);
   }
   addEmployee(employee: string) {
     this.employees.push(employee);
