@@ -2,12 +2,17 @@
 // setters => change (mutate) them
 
 class Department {
-  name: string;
+  // name: string;
   private employees: string[] = [];
 
-  constructor(n: string) {
-    this.name = n;
-  }
+  // constructor(n: string) {
+  //   this.name = n;
+  // }
+
+  // shorthand initialization
+constructor(private id:string, public name: string){
+
+}
 
   // this keyword is to refer to class property or a method inside a class
 
@@ -23,7 +28,7 @@ class Department {
   }
 }
 
-const accounting = new Department("Accounting");
+const accounting = new Department('1',"Accounting");
 
 accounting.addEmployee("Ralph");
 accounting.addEmployee("Josh");
