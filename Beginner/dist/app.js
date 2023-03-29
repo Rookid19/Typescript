@@ -24,7 +24,7 @@ function printColor(color) {
 printColor(Color.Red); // logs 0
 printColor(Color.Green); // logs 1
 printColor(Color.Blue); // logs 2
-const person = {
+var person = {
     name: "Maximilian",
     age: 30,
     hobbies: ["Sports", "Cooking"],
@@ -56,7 +56,7 @@ function printResult(num) {
 // FUNCTIONS AS TYPES
 /** @type {Function} */
 // let combineValues = Function
-let combineValues;
+var combineValues;
 combineValues = add;
 //Typescript isn't complaining because its meets typescript criteria thus add is a function and has two parameters
 // combineValues = printResult
@@ -70,17 +70,17 @@ combineValues = add;
  * @param {(num: number) => void} cb
  */
 function addAndHandle(n1, n2, cb) {
-    const result = n1 * n2;
+    var result = n1 * n2;
     cb(result);
 }
-addAndHandle(10, 5, (result) => {
+addAndHandle(10, 5, function (result) {
     console.log(result);
 });
 function generateError(message, code) {
     throw { message: message, errorCode: code };
 }
 console.log("my name is ");
-const e1 = {
+var e1 = {
     name: "Max",
     privileges: ["created-server"],
     startDate: new Date(),
@@ -101,21 +101,27 @@ function printEmployeeInformation(emp) {
     }
 }
 printEmployeeInformation(e1);
-class Car {
-    drive() {
+var Car = /** @class */ (function () {
+    function Car() {
+    }
+    Car.prototype.drive = function () {
         console.log("Driving....");
+    };
+    return Car;
+}());
+var Truck = /** @class */ (function () {
+    function Truck() {
     }
-}
-class Truck {
-    drive() {
+    Truck.prototype.drive = function () {
         console.log("Driving a truck...");
-    }
-    loadCargo(amount) {
+    };
+    Truck.prototype.loadCargo = function (amount) {
         console.log("Loading cargo ...." + amount);
-    }
-}
-const v1 = new Car();
-const v2 = new Truck();
+    };
+    return Truck;
+}());
+var v1 = new Car();
+var v2 = new Truck();
 function useVehicle(vehicle) {
     vehicle.drive();
     if (vehicle instanceof Truck) {
@@ -125,7 +131,7 @@ function useVehicle(vehicle) {
 useVehicle(v1);
 // we cant use instanceof because we are using interface
 function moveAnimal(animal) {
-    let speed;
+    var speed;
     switch (animal.type) {
         case "bird":
             speed = animal.flyingSpeed;
@@ -138,7 +144,7 @@ function moveAnimal(animal) {
 moveAnimal({ type: "horse", runningSpeed: 100 });
 // TYPE CASTING
 // const userInputElement = <HTMLInputElement>document.getElementById('user-input')
-const userInputElement = document.getElementById("user-input");
+var userInputElement = document.getElementById("user-input");
 if (userInputElement) {
     userInputElement.value = "Hi there";
 }
@@ -148,18 +154,18 @@ function add3(a, b) {
     }
     return a + b;
 }
-const result = add3('Joe', 'Kofi');
+var result = add3('Joe', 'Kofi');
 result.split(' ');
 //OPTIONAL CHAINING
-const fetchedUserData = {
+var fetchedUserData = {
     id: 'u1',
     name: 'Max',
     job: { title: 'CEO', description: 'My own company' }
 };
 console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
 // NULLISH COALESCING
-const userInput = undefined;
+var userInput = undefined;
 // ?? -> this is called nullish coalescing operator
 // if userInput is undefined or null return DEFAULT
-const storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
+var storedData = userInput !== null && userInput !== void 0 ? userInput : 'DEFAULT';
 console.log(storedData);
