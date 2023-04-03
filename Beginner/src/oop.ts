@@ -57,7 +57,7 @@ class Department {
  * we can inherit all the properties and methods of Department class
  * @super calls the constructor of the base class
  * @class ITDepartment
- * @extends {Department}
+ * @extends {Department} 
  */
 class ITDepartment extends Department {
   constructor(id: string, public admins: string[]) {
