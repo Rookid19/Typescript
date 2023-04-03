@@ -37,6 +37,11 @@ var Department = /** @class */ (function () {
         // private employees: string[] = [];
         this.employees = [];
     }
+    // static methods can be called without instantiating the class
+    // static methods are used to create utility functions
+    Department.createEmployee = function (name) {
+        return { name: name };
+    };
     // this keyword is to refer to class property or a method inside a class
     Department.prototype.describe = function () {
         console.log("Department " + this.id + " " + this.name);
@@ -47,6 +52,8 @@ var Department = /** @class */ (function () {
     Department.prototype.printEmployeeInformation = function () {
         console.log(this.employees);
     };
+    // to make it available without instantiating this you then add static keyword
+    Department.fiscalYear = 2020;
     return Department;
 }());
 /**
@@ -116,6 +123,9 @@ var AccountingDepartment = /** @class */ (function (_super) {
     };
     return AccountingDepartment;
 }(Department));
+// we call static method directly on the class without not using the new keyword
+var employee1 = Department.createEmployee('Akosua');
+console.log(employee1, Department.fiscalYear);
 var IT = new ITDepartment("1", ["randy"]);
 IT.addEmployee("Ralph");
 IT.addEmployee("Josh");

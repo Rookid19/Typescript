@@ -7,6 +7,9 @@
  * @class Department
  */
 class Department {
+
+  // to make it available without instantiating this you then add static keyword
+  static fiscalYear = 2020;
   //private readonly id : string
   // name: string;
 
@@ -21,7 +24,19 @@ class Department {
 
   // shorthand initialization
   // readonly is used to initialize property once
-  constructor(private readonly id: string, public name: string) {}
+  constructor(private readonly id: string, public name: string) {
+    // this keyword wont be able to access static properties thus refer to the
+    // instance base on the class but the static properties are not tied to the
+    // instance but the class itself
+    // console.log(this.fiscalYear)
+    console.log(Department.fiscalYear)
+  }
+
+  // static methods can be called without instantiating the class
+  // static methods are used to create utility functions
+  static createEmployee(name: string) {
+    return { name: name };
+  }
 
   // this keyword is to refer to class property or a method inside a class
 
@@ -100,6 +115,11 @@ class AccountingDepartment extends Department {
     console.log(this.reports);
   }
 }
+
+ // we call static method directly on the class without not using the new keyword
+
+const employee1 = Department.createEmployee('Akosua');
+console.log(employee1,Department.fiscalYear)
 
 const IT = new ITDepartment("1", ["randy"]);
 
