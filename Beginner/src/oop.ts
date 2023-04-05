@@ -6,7 +6,7 @@
  *
  * @class Department
  */
-class Department {
+abstract class Department {
 
   // to make it available without instantiating this you then add static keyword
   static fiscalYear = 2020;
@@ -24,7 +24,7 @@ class Department {
 
   // shorthand initialization
   // readonly is used to initialize property once
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this keyword wont be able to access static properties thus refer to the
     // instance base on the class but the static properties are not tied to the
     // instance but the class itself
@@ -40,9 +40,10 @@ class Department {
 
   // this keyword is to refer to class property or a method inside a class
 
-  describe(this: Department) {
-    console.log("Department " + this.id + " " + this.name);
-  }
+  // abstract methods cannot have a body (implementation). Is just a form of a skeleton method that must be implemented in the child class.
+ //abstract can be very useful when you want to force a child class to share a common method or property.
+  abstract describe(this: Department): void;
+
   addEmployee(employee: string) {
     this.employees.push(employee);
   }
@@ -64,6 +65,9 @@ class ITDepartment extends Department {
     //  always remember to call super() in the constructor of the child class
     super(id, "IT");
   }
+describe() {
+    console.log("IT Department - ID: " + this.id)
+}
 }
 
 /**
@@ -82,7 +86,7 @@ class AccountingDepartment extends Department {
     }
     throw new Error("No report found");
   }
-
+ 
   set mostRecentReport(value: string) {
     if (!value) {
       throw new Error("Please pass in a valid value");
@@ -97,6 +101,14 @@ class AccountingDepartment extends Department {
   ) {
     super(id, "Accounting");
     // this.lastReport = reports[0];
+  }
+
+  // we can override methods in the base class
+  // some we don't just want to offer an option of overriding a method because that always exists
+  //So to sum up: an abstract class is a blueprint for other classes, but can't be used on its own to create objects.
+  // You need to create a new class that extends the abstract class to be able to use it to create objects.
+  describe(){
+    console.log("Accounting Department - ID: " + this.id);
   }
 
   addEmployee(employee: string): void {
@@ -143,9 +155,11 @@ console.log(accounting.mostRecentReport)
 
 
 accounting.addEmployee("Max");
-accounting.printReports();
+// accounting.printReports();
+// accounting.printEmployeeInformation();
 
-accounting.printEmployeeInformation();
+accounting.describe();
+
 // const accountingCopy = { name: "fred", describe: accounting.describe };
 
 // accountingCopy.describe();

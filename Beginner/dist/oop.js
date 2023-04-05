@@ -36,15 +36,16 @@ var Department = /** @class */ (function () {
         //protected properties can be accessed inside it class and its child class(in other words any class that extends the base class)
         // private employees: string[] = [];
         this.employees = [];
+        // this keyword wont be able to access static properties thus refer to the
+        // instance base on the class but the static properties are not tied to the
+        // instance but the class itself
+        // console.log(this.fiscalYear)
+        console.log(Department.fiscalYear);
     }
     // static methods can be called without instantiating the class
     // static methods are used to create utility functions
     Department.createEmployee = function (name) {
         return { name: name };
-    };
-    // this keyword is to refer to class property or a method inside a class
-    Department.prototype.describe = function () {
-        console.log("Department " + this.id + " " + this.name);
     };
     Department.prototype.addEmployee = function (employee) {
         this.employees.push(employee);
@@ -72,6 +73,9 @@ var ITDepartment = /** @class */ (function (_super) {
         _this.admins = admins;
         return _this;
     }
+    ITDepartment.prototype.describe = function () {
+        console.log("IT Department - ID: " + this.id);
+    };
     return ITDepartment;
 }(Department));
 /**
@@ -108,6 +112,13 @@ var AccountingDepartment = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    // we can override methods in the base class
+    // some we don't just want to offer an option of overriding a method because that always exists
+    //So to sum up: an abstract class is a blueprint for other classes, but can't be used on its own to create objects.
+    // You need to create a new class that extends the abstract class to be able to use it to create objects.
+    AccountingDepartment.prototype.describe = function () {
+        console.log("Accounting Department - ID: " + this.id);
+    };
     AccountingDepartment.prototype.addEmployee = function (employee) {
         if (employee === "Ralph") {
             return;
@@ -139,7 +150,8 @@ accounting.mostRecentReport = "My name is barry allen";
 accounting.addReport("Something went wrong.....");
 console.log(accounting.mostRecentReport);
 accounting.addEmployee("Max");
-accounting.printReports();
-accounting.printEmployeeInformation();
+// accounting.printReports();
+// accounting.printEmployeeInformation();
+accounting.describe();
 // const accountingCopy = { name: "fred", describe: accounting.describe };
 // accountingCopy.describe();
