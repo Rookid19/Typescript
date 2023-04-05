@@ -94,7 +94,7 @@ class AccountingDepartment extends Department {
     this.addReport(value);
   }
 
-  constructor(
+ private constructor(
     id: string,
     private reports: string[],
     private lastReport: string = reports[0]
