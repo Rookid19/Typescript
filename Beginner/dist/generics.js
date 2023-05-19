@@ -28,5 +28,12 @@ console.log(countAndDescribe("My name is barry allen and i am the fastest man al
 function extractAndConvert(obj, key) {
     return "Value: " + obj[key];
 }
-extractAndConvert({ name: 'roo' }, 'name');
+extractAndConvert({ name: "roo" }, "name");
+const aaa = [{ name: "roo" }, { name: "randy" }, { name: "joe" }];
+function removeTest(item) {
+    const index = aaa.indexOf(item);
+    aaa.splice(index, 1);
+}
+removeTest({ name: "randy" });
+console.log("dataaaa ", aaa);
 //# sourceMappingURL=generics.js.map

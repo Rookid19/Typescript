@@ -42,15 +42,37 @@ function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
     decriptionText = "Got 1 element";
   } else if (element.length > 1) {
     decriptionText = "Got " + element.length + " elements";
-  } 
+  }
   return [element, decriptionText];
 }
 
-console.log(countAndDescribe("My name is barry allen and i am the fastest man alive"));
+console.log(
+  countAndDescribe("My name is barry allen and i am the fastest man alive")
+);
 // countAndDescribe(["sports", "cooking"]);ddsfdsfdsfsfd
 
-function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
   return "Value: " + obj[key];
 }
 
-extractAndConvert({name:'roo'},'name') 
+extractAndConvert({ name: "roo" }, "name");
+
+const aaa = [{ name: "roo" }, { name: "randy" }, { name: "joe" }];
+
+interface test {
+  name: string;
+}
+
+function removeTest<T extends test>(item: T) {
+  // when we try removing objects from an array  we get -1 one which always removes the last item in the array
+  // splice does not work fine with objects thus i have to do T extends string | number | boolean instead to
+  // only allow my function to accept primitive types
+  const index = aaa.indexOf(item);
+  aaa.splice(index, 1);
+}
+
+removeTest({ name: "randy" });
+console.log("dataaaa ", aaa);
