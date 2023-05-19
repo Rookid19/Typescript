@@ -36,4 +36,11 @@ function removeTest(item) {
 }
 removeTest({ name: "randy" });
 console.log("dataaaa ", aaa);
+function createCourseGoal(title, description, date) {
+    let courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal;
+}
 //# sourceMappingURL=generics.js.map

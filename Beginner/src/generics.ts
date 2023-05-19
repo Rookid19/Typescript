@@ -76,3 +76,19 @@ function removeTest<T extends test>(item: T) {
 
 removeTest({ name: "randy" });
 console.log("dataaaa ", aaa);
+
+interface CourseGoal {
+    title: string;
+    description: string;
+    completeUntil: Date;
+}
+
+// Partial is a generic type that allows us to create a new type that is a partial version of another type
+// It also makes the typ optional
+function createCourseGoal(title: string, description: string, date: Date): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+  return courseGoal as CourseGoal;
+}
