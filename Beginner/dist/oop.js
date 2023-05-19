@@ -95,7 +95,6 @@ var AccountingDepartment = /** @class */ (function (_super) {
         // this.lastReport = reports[0];
     }
     Object.defineProperty(AccountingDepartment.prototype, "mostRecentReport", {
-        // private lastReport: string;
         // we can use getter and setter to access private properties
         get: function () {
             if (this.lastReport) {
@@ -112,6 +111,13 @@ var AccountingDepartment = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    AccountingDepartment.getInstance = function () {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+        this.instance = new AccountingDepartment('d2', []);
+        return this.instance;
+    };
     // we can override methods in the base class
     // some we don't just want to offer an option of overriding a method because that always exists
     //So to sum up: an abstract class is a blueprint for other classes, but can't be used on its own to create objects.
@@ -145,7 +151,9 @@ IT.addEmployee("Josh");
 IT.describe();
 IT.printEmployeeInformation();
 console.log(IT);
-var accounting = new AccountingDepartment("2", []);
+// const accounting = new AccountingDepartment("2", []);
+var accounting = AccountingDepartment.getInstance();
+var accounting2 = AccountingDepartment.getInstance();
 accounting.mostRecentReport = "My name is barry allen";
 accounting.addReport("Something went wrong.....");
 console.log(accounting.mostRecentReport);
